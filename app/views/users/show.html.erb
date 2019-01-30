@@ -1,0 +1,9 @@
+<% provide(:title, @user.name) %>
+<h1><%= @user.name %></h1>
+<div class="container">
+    <%= image_tag @user.avatar.thumb.url, class: 'figure-img img-fluid rounded' %>
+    <p>Nombre y apellidos: <%= @user.name + " " + @user.surname %> <br>
+    Email: <%= @user.email %> <br>
+    Identificación: <%= @user.identification %> <br>
+    Imagen: <%= @user.avatar %> </p>
+</div>
