@@ -1,39 +1,46 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+    <div class="signup-box text-center col-md-6 offset-md-3">
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages' %>
 
         <% if request.path_info.include?("edit") %>
-            <%= image_tag @user.avatar.thumb.url, class: 'figure-img img-fluid rounded' %> <br>
+            <div>
+                <%= image_tag @user.avatar.thumb.url, size: "250x250", alt: "user-avatar", class: 'figure-img img-fluid rounded-circle'  %>
+            </div>
+            <br>
         <% end %>
 
-        <%= f.label :avatar %> <br>
-        <%= f.file_field :avatar %> <br>
+        <%= f.label :name, class: 'sr-only' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Nombres', required: true, autofocus: true %>
+
+        <%= f.label :surname, class: 'sr-only' %>
+        <%= f.text_field :surname, class: 'form-control', placeholder: 'Apellidos', required: true %>
+
+        <%= f.label :identification, class: 'sr-only' %>
+        <%= f.text_field :identification, class: 'form-control', placeholder: 'Identificación', required: true %>
+
+        <%= f.label :email, class: 'sr-only' %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Email', required: true %>
+
+        <%= f.label :password, class: 'sr-only' %>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Contraseña - Min. 8 caracteres' %>
+
+        <%= f.label :password_confirmation, class: 'sr-only' %>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirmar contraseña' %>
         <br>
 
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
-
-        <%= f.label :surname %>
-        <%= f.text_field :surname, class: 'form-control' %>
-
-        <%= f.label :identification %>
-        <%= f.text_field :identification, class: 'form-control' %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <div class="text-left">
+            <%= f.label :avatar, "Avatar" %>
+            <%= f.file_field :avatar, accept: 'image/png,image/gif,image/jpeg' %> <br>
+        </div>
 
         <% if request.path_info.include?("edit") %>
-            <%= f.submit "Save changes", class: "btn btn-primary" %>
+            <%= f.submit "Guardar cambios", class: "btn btn-success" %>
+            <%= link_to "Cancelar", users_path, class: 'btn btn-danger' %>
         <% else %>
-            <%= f.submit "Create my account", class: "btn btn-primary" %>
+            <p class="font-italic font-weight-bold">Todos los campos son obligatorios</p>
+            <%= f.submit "Crear cuenta", class: "btn btn-primary" %>
         <% end %>
     <% end %>
-  </div>
+    </div>
 </div>

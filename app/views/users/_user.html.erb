@@ -1,31 +1,30 @@
-<% @users.each do |varUser| %>
-    <div class="row">
-        <div class="col">
-            <a href="../users/<%= varUser.id %>"> Ver </a>
-        </div>
-        <div class="col">
-            <p> <%= varUser.name + " " + varUser.surname %> </p>
-        </div>
-        <div class="col">
-            <p> <%= varUser.identification %> </p>
-        </div>
-        <div class="col">
-            <p> <%= varUser.avatar %> </p>
-        </div>
-        <div class="col">
-            <p> <%= varUser.created_at %> </p>
-        </div>
-        <div class="col">
-            <p> <%= varUser.updated_at %> </p>
-        </div>
-        <div class="col">
-            <%= link_to 'Editar', edit_user_path(varUser) %>
-        </div>
-        <div class="col">
-            <% if current_user.id != varUser.id %>
-                <%= link_to 'Eliminar', varUser, method: :delete, data: { confirm: '¿Estás seguro?'} %>
-            <% end %>
-        </div>
-    </div>
-    <hr>
-<% end %>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @users.each_with_index do |varUser, index| %>
+        <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= varUser.name %></td>
+            <td><%= varUser.surname %></td>
+            <td><%= varUser.email %></td>
+            <td>
+                <dt><%= link_to 'Ver', user_path(varUser.id) %></dt>
+                <dt><%= link_to 'Editar', edit_user_path(varUser) %></dt>
+                <dt>
+                    <% if current_user.id != varUser.id %>
+                        <%= link_to 'Eliminar', varUser, method: :delete, data: { confirm: '¿Estás seguro?'} %>
+                    <% end %>
+                </dt>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

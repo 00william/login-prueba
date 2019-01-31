@@ -52,10 +52,16 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bootstrap 4 ruby gem for Ruby on Rails
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.2.1'
 
 # Bootstrap JavaScript depends on jQuery.
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'jquery-rails'
+
+# Works with Rails out of the box
+gem 'popper_js', '~> 1.14.5'
+
+# Provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline
+#gem "font-awesome-rails"
 
 # Upload files in Ruby applications, map them to a range of ORMs, store them on different backends
 gem 'carrierwave'

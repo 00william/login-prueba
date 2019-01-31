@@ -1,9 +1,21 @@
-<% provide(:title, @user.name) %>
-<h1><%= @user.name %></h1>
-<div class="container">
-    <%= image_tag @user.avatar.thumb.url, class: 'figure-img img-fluid rounded' %>
-    <p>Nombre y apellidos: <%= @user.name + " " + @user.surname %> <br>
-    Email: <%= @user.email %> <br>
-    Identificación: <%= @user.identification %> <br>
-    Imagen: <%= @user.avatar %> </p>
+<h1>Información del usuario <%= @user.name + ' ' + @user.surname %> </h1>
+<hr>
+<br>
+
+<div class="row">
+    <div class="info-box text-center col-md-6 offset-md-3">
+        <div>
+            <%= image_tag @user.avatar.thumb.url, size: "250x250", alt: "user-avatar", class: 'figure-img img-fluid rounded-circle' %>
+        </div>
+        <br>
+        <div class="text-left">
+            <p><b>Nombre y apellidos:</b> <%= @user.name + " " + @user.surname %> <br>
+               <b>Identificación:</b> <%= @user.identification %> <br>
+               <b>Email:</b> <%= @user.email %> <br></p>
+        </div>
+        <div>
+            <%= link_to "Regresar", users_path, class: 'btn btn-primary' %>
+            <%= link_to "Editar", edit_user_path, class: 'btn btn-success' %>
+        </div>
+    </div>
 </div>

@@ -12,4 +12,35 @@
  *
  */
 
- @import "bootstrap";
+@import "bootstrap";
+
+body{
+    margin-top: 70px;
+    background-image: linear-gradient(-90deg, rgb(32, 66, 214), rgb(142, 255, 198));
+}
+
+hr{
+    border-color: black;
+}
+
+#btnGroupDrop1{
+    margin-left: 15px;
+}
+
+.login-box{
+    padding: 65px;
+    background-color: rgba(52, 58, 64, 0.384);
+    border-radius: 15px;
+}
+
+.info-box{
+    padding: 35px;
+    background-color: rgba(52, 58, 64, 0.384);
+    border-radius: 15px;
+}
+
+.signup-box{
+    padding: 45px;
+    background-color: rgba(52, 58, 64, 0.384);
+    border-radius: 15px;
+}

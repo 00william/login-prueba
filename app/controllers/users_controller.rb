@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :show, :destroy]
 
   def index
-    @users = User.all
+    @users = User.all.order(id: :asc)
   end
 
   def new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Bienvenido a la aplicación!"
+      flash[:success] = "Usuario registrado"
       redirect_to @user
     else
       render 'new'
